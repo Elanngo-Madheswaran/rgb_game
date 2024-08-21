@@ -5,18 +5,11 @@ class Cir extends Component {
     const { col, handleClick } = this.props;
     return (
       <div 
-        style={{ 
-          width: '120px', 
-          height: '50px',
-          cursor: 'pointer',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }} 
+        className="bg-black border-4 flex rounded-lg cursor-pointer border-blue-700 p-5 hover:bg-blue-700 w-44"
         onClick={handleClick}
       >
         {/* Display the RGB value inside the box */}
-        <span style={{ color: 'black', fontWeight: 'bold' }}>{col}</span>
+        <span className="text-white text-lg self-center font-normal">{col}</span>
       </div>
     );
   }
@@ -64,7 +57,7 @@ class App extends Component {
 
   updateColors = () => {
     const selectedColor = this.generateRandomColor();
-    const otherColors = this.generateMultipleColors(5, selectedColor); // Generate other colors excluding the selected color
+    const otherColors = this.generateMultipleColors(3, selectedColor); // Generate other colors excluding the selected color
     const allColors = [...otherColors, selectedColor]; // Add the selected color to the list
     this.setState({ 
       selectedcol: selectedColor, 
@@ -84,19 +77,17 @@ class App extends Component {
   render() {
     const { selectedcol, colorOptions } = this.state;
     return (
-      <div>
-        <h1>RGB game</h1>
-        <div 
-          style={{ 
-            backgroundColor: selectedcol, 
-            width: '120px', 
-            height: '50px',
-            marginBottom: '20px'
-          }} 
-        />
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+      <div className="flex flex-col items-center m-5 p-5">
+        <h1 className="text-6xl text-center font-bold m-5 p-5">RGB GAME</h1>
+          <div className="w-48 sm:w-96 sm:h-96 h-48" 
+            style={{ 
+              backgroundColor: selectedcol
+            }} 
+          />
+          <p className="sm:text-3xl text-xl font-medium self-start sm:m-5 sm:p-5 m-2 p-2 mt-5 pt-5 ">Choose the right colour value:</p>
+        <div className="flex justify-center flex-wrap gap-10">
           {colorOptions.map((color, index) => (
-            <Cir 
+            <Cir
               key={index}
               col={color} 
               handleClick={() => this.handleColorClick(color)}
