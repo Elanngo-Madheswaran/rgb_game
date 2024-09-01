@@ -92,7 +92,7 @@ class App extends Component {
     const { selectedcol, colorOptions, numberOfOptions } = this.state;
     return (
       <div className="flex flex-col items-center m-5 p-5">
-        <h1 className="text-6xl text-center font-bold m-5 p-5">RGB GAME</h1>
+        <h1 className="text-6xl text-center font-bold m-5 p-5 text-black">RGB GAME</h1>
         <div className="w-48 sm:w-96 sm:h-96 h-48" 
           style={{ 
             backgroundColor: selectedcol
